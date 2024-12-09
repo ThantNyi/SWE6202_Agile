@@ -1,0 +1,19 @@
+body {
+  background-color: #f8f9fa;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #266bb6;
+  color: white;
+  padding: 1rem 0;
+}
+
+.hero {
+  background-color: #e9ecef;
+  border: 1px solid #dee2e6;
+}
+
+.card {
+  margin-bottom: 1.5rem;
+}
