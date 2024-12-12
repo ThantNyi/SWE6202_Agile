@@ -114,6 +114,38 @@ def get_weather_record(id):
         return jsonify({"error": "Record not found"}), 404
     return weather_record_schema.jsonify(record)
 
+#Route to get paramatised qurys 
+# Route to get filtered weather records based on query parameters
+@app.route('/weather/filter', methods=['GET'])
+def get_filtered_weather_records():
+    # Extract query parameters
+    start_date = request.args.get('start_date')  # Optional
+    end_date = request.args.get('end_date')      # Optional
+    min_temp_air = request.args.get('min_temp_air', type=float)  # Optional
+    max_temp_air = request.args.get('max_temp_air', type=float)  # Optional
+    coordinates = request.args.get('coordinates')  # Optional
+
+    # Start building the query
+    query = WeatherRecord.query
+
+    # Apply filters conditionally
+    if start_date:
+        query = query.filter(WeatherRecord.date >= start_date)
+    if end_date:
+        query = query.filter(WeatherRecord.date <= end_date)
+    if min_temp_air is not None:
+        query = query.filter(WeatherRecord.temperature_air >= min_temp_air)
+    if max_temp_air is not None:
+        query = query.filter(WeatherRecord.temperature_air <= max_temp_air)
+    if coordinates:
+        query = query.filter(WeatherRecord.coordinates == coordinates)
+
+    # Execute the query and serialize results
+    filtered_records = query.all()
+    result = weather_records_schema.dump(filtered_records)
+    return jsonify(result)
+
+
 # Route to delete a weather record by ID
 @app.route('/weather/<id>', methods=['DELETE'])
 def delete_weather_record(id):
