@@ -1,0 +1,27 @@
+ Test the Endpoint:
+
+
+Using cURL
+You can test the endpoint by sending a POST request with a JSON payload:
+
+ 
+curl -X POST http://127.0.0.1:8000/api/energy-data/ \
+    -H "Content-Type: application/json" \
+    -d '[
+        {"timestamp": "2024-12-11T10:00:00", "energy_output_mw": 55.5},
+        {"timestamp": "2024-12-11T11:00:00", "energy_output_mw": 60.2},
+        {"timestamp": "2024-12-11T12:00:00", "energy_output_mw": 65.8}
+    ]'
+Using Postman
+Open Postman.
+
+http://127.0.0.1:8000/api/energy-data/
+In the Headers section, add:
+Key: Content-Type
+Value: application/json
+
+[
+    {"timestamp": "2024-12-11T10:00:00", "energy_output_mw": 55.5},
+    {"timestamp": "2024-12-11T11:00:00", "energy_output_mw": 60.2},
+    {"timestamp": "2024-12-11T12:00:00", "energy_output_mw": 65.8}
+]

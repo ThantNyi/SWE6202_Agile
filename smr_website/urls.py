@@ -20,4 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('api.urls')),  # Include the API app
+    path('api/', include('api.urls')),  # Add prefix for API endpoints (e.g., /api/energy-data/)
+
 ]

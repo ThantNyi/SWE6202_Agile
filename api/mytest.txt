@@ -1,0 +1,21 @@
+ 
+ here are my tests Using curl or Postman to test the endpoint:
+
+URL: http://127.0.0.1:8000/api/energy-data/bulk-update/
+Method: PUT
+Headers:
+Content-Type: application/json
+Body:
+json
+
+[
+    {"id": 1, "energy_output_mw": 58.5},
+    {"id": 2, "energy_output_mw": 62.3}
+]
+Expected Response:
+
+json
+
+{
+    "message": "Bulk update successful"
+}
