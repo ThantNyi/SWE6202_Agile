@@ -180,11 +180,18 @@ def get_data(plan):
 @app.route("/")
 def index():
     return render_template("index.html")
-
+    
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
 
 @app.route("/products")
 def products():
     return render_template("products.html")
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template("dashboard.html")
 
 
 @app.route("/subscriptions")
